@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Report</title>
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+  <div class="logo">
+    <img src="/static/logo.png" alt="logo" class="logo">
+  </div>
+  <div class="header-title"><h1>Mosaic<span> Wellness </span>Blood<span> Report</span></h1></div>
+
+
+<div class="report">
+  <div class="user-profile">
+    <!-- <img src="/static/user.png" alt="user"><br><br><br><br><br><br><br> -->
+    <form method="post" action="/results" enctype="multipart/form-data">
+      <input type="file" id="myFile" name="filename" >
+      <input type="submit">
+    </form>
+    <!-- <div class="user-details">
+      <h1>Name:</h1>
+    </div> -->
+  </div>
+  <table class="responstable">
+  
+    <tr>
+      <!-- <th>Main driver</th> -->
+      <th data-th="User Details"><span>Investigation</span></th>
+      <th>Result</th>
+      <th>Reference Value</th>
+      <th>Unit</th>
+    </tr>
+    {% for investigation in investigations %} 
+    <tr>
+      <!-- <td><input type="radio"/></td> -->
+      <td>{{investigation.name}}</td>
+      <td>{{investigation.value}}  <span class="tags {{ investigation.tag }}">{{ investigation.tag }}</span>
+      <td>{{investigation.ref_range}}</td>
+      <td>{{investigation.unit}}</td>
+    </tr>
+    {% endfor %}
+
+
+  </table>
+</div>
+</body>
+</html>
